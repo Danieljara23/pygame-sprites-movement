@@ -1,0 +1,18 @@
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
+
+HC74225 = (199, 66, 37)
+H61CD35 = (97, 205, 53)
+
+CUSTOM_COLOR = (50, 50, 50)
+
+# Screen Size
+
+SCREEN_WIDTH, SCREEN_HEIGHT =1000, 600
+FPS = 60
+
