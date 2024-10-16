@@ -6,9 +6,13 @@ from sprite import AnimatedSprite
 pygame.init()
 
 # Configurar la pantalla
-screen_width, screen_height = 800, 600
+screen_width, screen_height = 1000, 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Juego de Movimiento de Personaje")
+
+# Background
+background = pygame.image.load("assets/Backgrounds/forest.png")
+background = pygame.transform.scale(background, (screen_width, screen_height))
 
 # Configurar el reloj
 clock = pygame.time.Clock()
@@ -38,6 +42,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                  sprite.jump()
 
         # Obtener las teclas presionadas
         keys = pygame.key.get_pressed()
@@ -52,25 +59,21 @@ def main():
             dx = 5
             sprite.animate = True
             sprite.facing_left = False
-        if keys[pygame.K_UP]:
-            dy = -5
-            sprite.animate = True
-        if keys[pygame.K_DOWN]:
-            dy = 5
-            sprite.animate = True
 
         # Si no se presiona ninguna tecla, detener la animación
-        if dx == 0 and dy == 0:
+        if dx == 0:
             sprite.animate = False
 
         # Mover el sprite
-        sprite.move(dx, dy)
+        sprite.move(dx)
 
         # Actualizar todos los sprites
         all_sprites.update()
 
         # Dibujar todo
-        screen.fill((0, 0, 0))  # Limpiar la pantalla con color negro
+        # screen.fill((0, 0, 0))  # Limpiar la pantalla con color negro
+        screen.blit(background,(0, 0))
+
         all_sprites.draw(screen)
         pygame.display.flip()
 
