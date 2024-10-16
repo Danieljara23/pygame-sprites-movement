@@ -14,20 +14,17 @@ pygame.display.set_caption("Juego de Movimiento de Personaje")
 clock = pygame.time.Clock()
 
 
-def load_images():
-    return [
-        pygame.image.load(f"assets/warrior/Warrior 1 - Axe - Walk_00{num}.png")
-        for num in range(1, 6)
-    ]
-
 
 def main():
     # Cargar las imágenes del sprite
-    sprite_images = load_images()
+    # Cargar el spritesheet
+    spritesheet = pygame.image.load('assets/Goblin/Run.png').convert_alpha()
 
     # Crear una instancia del sprite
-    sprite = AnimatedSprite(sprite_images, screen_width // 2, screen_height // 2, 0.5)
+    num_frames = 8  # Número de frames en el spritesheet
+    sprite = AnimatedSprite(spritesheet, num_frames, screen_width // 2, screen_height // 2, 0.1)
 
+    
     # Crear un grupo de sprites
     all_sprites = pygame.sprite.Group()
     all_sprites.add(sprite)
